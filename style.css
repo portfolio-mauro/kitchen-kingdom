@@ -320,12 +320,12 @@ body {
   border-radius: 8px;
 }
 
-#mce-error-response:not(:empty) {
+#mce-error-response {
   color: var(--red);
   background: rgba(232, 93, 93, 0.12);
 }
 
-#mce-success-response:not(:empty) {
+#mce-success-response {
   color: var(--green);
   background: rgba(76, 175, 142, 0.12);
 }
