@@ -13,6 +13,21 @@
     <link rel="icon" href="assets/fav_icon.svg" type="image/webp">
     <link rel="stylesheet" href="style.css">
     <script src="mailchimp.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            ['.ac-stack', '.ev-stack', '.up-stack'].forEach(function (sel) {
+                var el = document.querySelector(sel);
+                if (el) {
+                    new IntersectionObserver(function (entries, obs) {
+                        if (entries[0].isIntersecting) {
+                            entries[0].target.classList.add('fanned');
+                            obs.disconnect();
+                        }
+                    }, { threshold: 0.4 }).observe(el);
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -32,7 +47,10 @@
     <!-- ── HERO ─────────────────────────────────────────────── -->
     <section class="hero">
         <div class="hero-bg">
-            <img src="assets/background.webp" alt="A wall of dishes">
+            <picture>
+                <source srcset="assets/background_mobile.webp" media="(max-width: 600px)">
+                <img src="assets/background.webp" alt="A wall of dishes">
+            </picture>
         </div>
         <p class="hero-pre">ENTER THE</p>
         <p class="hero-title1">KITCHEN</p>

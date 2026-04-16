@@ -78,6 +78,35 @@ body {
 }
 .nav-cta:hover { opacity: 0.9; }
 
+/* ─── BUTTON SQUASH & STRETCH ─────────────────────────── */
+@keyframes btn-squish {
+  0%   { transform: scaleX(1)    scaleY(1);    }
+  18%  { transform: scaleX(1.3)  scaleY(0.7);  }
+  42%  { transform: scaleX(0.9)  scaleY(1.12); }
+  62%  { transform: scaleX(1.07) scaleY(0.95); }
+  80%  { transform: scaleX(0.98) scaleY(1.02); }
+  100% { transform: scaleX(1)    scaleY(1);    }
+}
+
+.btn-primary,
+.btn-secondary,
+.nav-cta {
+  will-change: transform;
+  transition: transform 0.2s ease;
+}
+.btn-primary:hover,
+.btn-secondary:hover,
+.nav-cta:hover {
+  animation: btn-squish 0.35s ease forwards;
+}
+.btn-primary:active,
+.btn-secondary:active,
+.nav-cta:active {
+  animation: none;
+  transform: scaleX(1.15) scaleY(0.82);
+  transition-duration: 0.08s;
+}
+
 /* ─── PAGE ────────────────────────────────────────────── */
 .page {
   display: flex;
@@ -146,11 +175,20 @@ body {
   width: 233px; height: 70px; cursor: pointer;
 }
 
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 .hero-badge {
   position: absolute; right: 64px; top: 687px;
   width: 122px; height: 136px;
 }
-.hero-badge img { width: 100%; height: 100%; object-fit: contain; }
+.hero-badge img {
+  width: 100%; height: 100%; object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.55));
+  animation: spin-slow 240s linear infinite;
+}
 
 /* ─── GAME INFO ───────────────────────────────────────── */
 .game-info {
@@ -394,23 +432,68 @@ body {
 .game-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* Action cards */
-.ac-stack { width: 642px; height: 438px; }
+.ac-stack {
+  width: 642px; height: 438px;
+  /* translate offsets used to collapse cards into a stack before fanning */
+  --ac1-tx: 132px; --ac1-ty: -30px;
+  --ac3-tx: -133px; --ac3-ty: 10px;
+}
 .game-card.ac { width: 265px; height: 369px; }
-.ac1 { left: 0;     top: 40px; transform: rotate(-5.31deg); }
-.ac2 { left: 132px; top: 10px; transform: rotate(6.18deg);  }
-.ac3 { left: 265px; top: 0;   transform: rotate(20.4deg);   }
+/* default: stacked (all cards centred on ac2's position) */
+.ac1 { left: 0;     top: 40px; transform: translate(var(--ac1-tx), var(--ac1-ty)) rotate(0deg); }
+.ac2 { left: 132px; top: 10px; transform: rotate(0deg); }
+.ac3 { left: 265px; top: 0;    transform: translate(var(--ac3-tx), var(--ac3-ty)) rotate(0deg); }
+
+/* fan keyframes */
+@keyframes ac1-fan {
+  from { transform: translate(var(--ac1-tx), var(--ac1-ty)) rotate(0deg); }
+  to   { transform: rotate(-5.31deg); }
+}
+@keyframes ac2-fan {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(6.18deg); }
+}
+@keyframes ac3-fan {
+  from { transform: translate(var(--ac3-tx), var(--ac3-ty)) rotate(0deg); }
+  to   { transform: rotate(20.4deg); }
+}
+.ac-stack.fanned .ac1 { animation: ac1-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) both; }
+.ac-stack.fanned .ac2 { animation: ac2-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) 0.08s both; }
+.ac-stack.fanned .ac3 { animation: ac3-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) 0.16s both; }
 
 /* Event cards */
-.ev-stack { width: 490px; height: 430px; }
+.ev-stack { width: 490px; height: 430px; --ev2-tx: -138px; --ev2-ty: 34px; }
 .game-card.ev { width: 272px; height: 378px; }
-.ev1 { left: 0;     top: 34px; transform: rotate(-1.02deg);  }
-.ev2 { left: 138px; top: 0;    transform: rotate(13.21deg);  }
+.ev1 { left: 0;     top: 34px; transform: rotate(0deg); }
+.ev2 { left: 138px; top: 0;    transform: translate(var(--ev2-tx), var(--ev2-ty)) rotate(0deg); }
+
+@keyframes ev1-fan {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-1.02deg); }
+}
+@keyframes ev2-fan {
+  from { transform: translate(var(--ev2-tx), var(--ev2-ty)) rotate(0deg); }
+  to   { transform: rotate(13.21deg); }
+}
+.ev-stack.fanned .ev1 { animation: ev1-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) both; }
+.ev-stack.fanned .ev2 { animation: ev2-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) 0.1s both; }
 
 /* Upgrade cards */
-.up-stack { width: 523px; height: 405px; }
+.up-stack { width: 523px; height: 405px; --up2-tx: -217px; --up2-ty: 8px; }
 .game-card.up { width: 272px; height: 378px; }
-.up1 { left: 0;     top: 8px; transform: rotate(-6deg);   }
-.up2 { left: 217px; top: 0;   transform: rotate(4.9deg);  }
+.up1 { left: 0;     top: 8px;  transform: rotate(0deg); }
+.up2 { left: 217px; top: 0;    transform: translate(var(--up2-tx), var(--up2-ty)) rotate(0deg); }
+
+@keyframes up1-fan {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-6deg); }
+}
+@keyframes up2-fan {
+  from { transform: translate(var(--up2-tx), var(--up2-ty)) rotate(0deg); }
+  to   { transform: rotate(4.9deg); }
+}
+.up-stack.fanned .up1 { animation: up1-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) both; }
+.up-stack.fanned .up2 { animation: up2-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) 0.1s both; }
 
 /* ─── AIM ─────────────────────────────────────────────── */
 .aim-sticker-wrap {
@@ -551,18 +634,18 @@ body {
   .t-author { font-size: 22px; }
 
   /* Card stacks — scale to ~75% */
-  .ac-stack { width: 482px; height: 329px; }
+  .ac-stack { width: 482px; height: 329px; --ac1-tx: 99px; --ac1-ty: -22px; --ac3-tx: -100px; --ac3-ty: 8px; }
   .game-card.ac { width: 199px; height: 277px; }
   .ac1 { left: 0;    top: 30px; }
   .ac2 { left: 99px; top: 8px; }
   .ac3 { left: 199px; top: 0; }
 
-  .ev-stack { width: 368px; height: 323px; }
+  .ev-stack { width: 368px; height: 323px; --ev2-tx: -104px; --ev2-ty: 26px; }
   .game-card.ev { width: 204px; height: 284px; }
   .ev1 { left: 0;    top: 26px; }
   .ev2 { left: 104px; top: 0; }
 
-  .up-stack { width: 393px; height: 304px; }
+  .up-stack { width: 393px; height: 304px; --up2-tx: -163px; --up2-ty: 6px; }
   .game-card.up { width: 204px; height: 284px; }
   .up1 { left: 0;    top: 6px; }
   .up2 { left: 163px; top: 0; }
@@ -715,18 +798,18 @@ body {
   .photo-a93 { left: 0; top: 44%; width: 37%; height: 50%; }
 
   /* Card stacks — ~50% scale */
-  .ac-stack { width: 322px; height: 220px; margin: 0 auto; }
+  .ac-stack { width: 322px; height: 220px; margin: 0 auto; --ac1-tx: 66px; --ac1-ty: -15px; --ac3-tx: -67px; --ac3-ty: 5px; }
   .game-card.ac { width: 133px; height: 185px; }
   .ac1 { left: 0;    top: 20px; }
   .ac2 { left: 66px; top: 5px; }
   .ac3 { left: 133px; top: 0; }
 
-  .ev-stack { width: 246px; height: 216px; margin: 0 auto; }
+  .ev-stack { width: 246px; height: 216px; margin: 0 auto; --ev2-tx: -69px; --ev2-ty: 17px; }
   .game-card.ev { width: 136px; height: 189px; }
   .ev1 { left: 0;   top: 17px; }
   .ev2 { left: 69px; top: 0; }
 
-  .up-stack { width: 262px; height: 203px; margin: 0 auto; }
+  .up-stack { width: 262px; height: 203px; margin: 0 auto; --up2-tx: -109px; --up2-ty: 4px; }
   .game-card.up { width: 136px; height: 189px; }
   .up1 { left: 0;    top: 4px; }
   .up2 { left: 109px; top: 0; }
