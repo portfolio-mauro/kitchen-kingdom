@@ -193,7 +193,7 @@ body {
 /* ─── GAME INFO ───────────────────────────────────────── */
 .game-info {
   position: relative;
-  width: 1394px; height: 540px;
+  width: 1394px; height: 560px;
   flex-shrink: 0;
 }
 
@@ -216,7 +216,7 @@ body {
 }
 
 .characters-group {
-  position: absolute; left: 2px; top: 125px;
+  position: absolute; left: 2px; top: 148px;
   width: 737px; height: 400px;
 }
 
