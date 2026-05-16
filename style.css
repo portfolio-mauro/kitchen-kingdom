@@ -292,36 +292,36 @@ body {
 }
 
 /* Full-width wrappers */
-.form-container,
-.emailoctopus-form-wrapper { width: 100%; }
+#mc-waitlist .form-container,
+#mc-waitlist .emailoctopus-form-wrapper { width: 100% !important; }
 
 /* Remove EO's inline margin-top */
-.emailoctopus-form-wrapper { margin-top: 0 !important; }
+#mc-waitlist .emailoctopus-form-wrapper { margin-top: 0 !important; }
 
 /* Main form: flex column with gap between fields and button */
-.emailoctopus-form .main-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+#mc-waitlist .emailoctopus-form .main-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
 }
 
 /* Field rows: stack label above input, remove Bootstrap mb-2 */
-.emailoctopus-form-row {
-  display: flex;
-  flex-direction: column;
+#mc-waitlist .emailoctopus-form-row {
+  display: flex !important;
+  flex-direction: column !important;
   margin-bottom: 0 !important;
 }
 
 /* Labels */
-.emailoctopus-form-row label {
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0;
+#mc-waitlist .emailoctopus-form-row label {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  margin-bottom: 0 !important;
 }
 
-/* Inputs — prefix with #mc-waitlist to outrank EO's injected <style> tag */
+/* Inputs */
 #mc-waitlist .emailoctopus-form-row input.form-control,
 #mc-waitlist .emailoctopus-form-row input.form-control:focus,
 #mc-waitlist .emailoctopus-form-row input.form-control:active {
@@ -332,8 +332,8 @@ body {
   border-color: var(--nav-border) !important;
   border-radius: 12px !important;
   color: white !important;
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 16px !important;
   padding: 14px 20px !important;
   margin: 0 !important;
   height: auto !important;
@@ -349,55 +349,55 @@ body {
   border-color: var(--red) !important;
 }
 
-.emailoctopus-form-row input.form-control::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+#mc-waitlist .emailoctopus-form-row input.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Submit button — override Bootstrap btn-primary */
-.emailoctopus-form input[type="submit"] {
-  display: block;
-  width: 100%;
-  height: 60px;
+/* Submit button */
+#mc-waitlist .emailoctopus-form input[type="submit"] {
+  display: block !important;
+  width: 100% !important;
+  height: 60px !important;
   margin: 0 !important;
-  padding: 0;
+  padding: 0 !important;
   background: var(--red) !important;
   color: white !important;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
   border: none !important;
   border-radius: 100px !important;
-  cursor: pointer;
-  transition: opacity 0.2s;
+  cursor: pointer !important;
+  transition: opacity 0.2s !important;
   box-shadow: none !important;
 }
 
-.emailoctopus-form input[type="submit"]:hover { opacity: 0.9; }
+#mc-waitlist .emailoctopus-form input[type="submit"]:hover { opacity: 0.9; }
 
 /* Success / error messages — hide when empty */
-.emailoctopus-success-message:empty,
-.emailoctopus-error-message:empty { display: none; }
+#mc-waitlist .emailoctopus-success-message:empty,
+#mc-waitlist .emailoctopus-error-message:empty { display: none; }
 
-.emailoctopus-success-message,
-.emailoctopus-error-message {
-  font-family: 'Raleway', sans-serif;
-  font-size: 15px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 8px;
+#mc-waitlist .emailoctopus-success-message,
+#mc-waitlist .emailoctopus-error-message {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 15px !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  margin-bottom: 8px !important;
 }
 
-.emailoctopus-success-message {
-  color: var(--green)!important;
-  background: rgba(76, 175, 142, 0.12);
+#mc-waitlist .emailoctopus-success-message {
+  color: var(--green) !important;
+  background: rgba(76, 175, 142, 0.12) !important;
 }
 
-.emailoctopus-error-message {
-  color: var(--red)!important;
-  background: rgba(232, 93, 93, 0.12);
+#mc-waitlist .emailoctopus-error-message {
+  color: var(--red) !important;
+  background: rgba(232, 93, 93, 0.12) !important;
 }
 
-.emailoctopus-is-hidden { display: none !important; }
+#mc-waitlist .emailoctopus-is-hidden { display: none !important; }
 
 .feature-row {
   width: 1404px;
