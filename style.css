@@ -321,10 +321,10 @@ body {
   margin-bottom: 0;
 }
 
-/* Inputs — override Bootstrap form-control styles */
-.emailoctopus-form-row input.form-control,
-.emailoctopus-form-row input.form-control:focus,
-.emailoctopus-form-row input.form-control:active {
+/* Inputs — prefix with #mc-waitlist to outrank EO's injected <style> tag */
+#mc-waitlist .emailoctopus-form-row input.form-control,
+#mc-waitlist .emailoctopus-form-row input.form-control:focus,
+#mc-waitlist .emailoctopus-form-row input.form-control:active {
   box-sizing: border-box !important;
   background: rgba(38, 45, 58, 0.6) !important;
   border-width: 1px !important;
@@ -345,7 +345,7 @@ body {
   transition: border-color 0.2s !important;
 }
 
-.emailoctopus-form-row input.form-control:focus {
+#mc-waitlist .emailoctopus-form-row input.form-control:focus {
   border-color: var(--red) !important;
 }
 
