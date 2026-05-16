@@ -291,32 +291,26 @@ body {
   opacity: 0.8;
 }
 
-/* Hide EO's own title/description — we supply our own above */
-.emailoctopus-form-wrapper > h2,
-.emailoctopus-form-wrapper > p:not(.emailoctopus-success-message):not(.emailoctopus-error-message) {
-  display: none;
-}
-
-/* Full-width wrapper + flex column layout */
+/* Full-width wrappers */
+.form-container,
 .emailoctopus-form-wrapper { width: 100%; }
 
-.emailoctopus-form {
-  width: 100%;
+/* Remove EO's inline margin-top */
+.emailoctopus-form-wrapper { margin-top: 0 !important; }
+
+/* Main form: flex column with gap between fields and button */
+.emailoctopus-form .main-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Neutralise any Bootstrap grid EO may inject */
-.emailoctopus-form .container,
-.emailoctopus-form .row { display: contents; }
-.emailoctopus-form [class*="col-"] { padding: 0; }
-
-/* Field rows */
+/* Field rows: stack label above input, remove Bootstrap mb-2 */
 .emailoctopus-form-row {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 0 !important;
 }
 
 /* Labels */
@@ -325,56 +319,67 @@ body {
   font-size: 16px;
   font-weight: 700;
   color: white;
+  margin-bottom: 0;
 }
 
-/* Inputs */
-.emailoctopus-form-row input[type="text"],
-.emailoctopus-form-row input[type="email"] {
-  background: rgba(38, 45, 58, 0.6);
-  border: 1px solid var(--nav-border);
-  border-radius: 12px;
-  color: white;
+/* Inputs — override Bootstrap form-control styles */
+.emailoctopus-form-row input.form-control {
+  background: rgba(38, 45, 58, 0.6) !important;
+  border: 1px solid var(--nav-border) !important;
+  border-radius: 12px !important;
+  color: white !important;
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
-  padding: 14px 20px;
+  padding: 14px 20px !important;
+  height: auto !important;
   width: 100%;
   outline: none;
+  box-shadow: none !important;
   transition: border-color 0.2s;
 }
 
-.emailoctopus-form-row input[type="text"]:focus,
-.emailoctopus-form-row input[type="email"]:focus { border-color: var(--red); }
+.emailoctopus-form-row input.form-control:focus {
+  border-color: var(--red) !important;
+  box-shadow: none !important;
+  background: rgba(38, 45, 58, 0.6) !important;
+}
 
-.emailoctopus-form-row input[type="text"]::placeholder,
-.emailoctopus-form-row input[type="email"]::placeholder { color: rgba(255, 255, 255, 0.4); }
+.emailoctopus-form-row input.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
 
-/* Submit button */
-.emailoctopus-form button[type="submit"] {
+/* Submit button — override Bootstrap btn-primary */
+.emailoctopus-form input[type="submit"] {
   display: block;
   width: 100%;
   height: 60px;
-  margin-top: 8px;
-  background: var(--red);
-  color: white;
+  margin: 0 !important;
+  padding: 0;
+  background: var(--red) !important;
+  color: white !important;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 20px;
-  border: none;
-  border-radius: 100px;
+  border: none !important;
+  border-radius: 100px !important;
   cursor: pointer;
   transition: opacity 0.2s;
+  box-shadow: none !important;
 }
 
-.emailoctopus-form button[type="submit"]:hover { opacity: 0.9; }
+.emailoctopus-form input[type="submit"]:hover { opacity: 0.9; }
 
-/* Success / error messages */
+/* Success / error messages — hide when empty */
+.emailoctopus-success-message:empty,
+.emailoctopus-error-message:empty { display: none; }
+
 .emailoctopus-success-message,
 .emailoctopus-error-message {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
   padding: 12px 16px;
   border-radius: 8px;
-  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .emailoctopus-success-message {
@@ -398,6 +403,10 @@ body {
   width: 726px;
   display: flex; flex-direction: column; gap: 40px;
   flex-shrink: 0;
+}
+
+.text-center{
+  display: none;
 }
 
 /* ─── STORY ───────────────────────────────────────────── */
