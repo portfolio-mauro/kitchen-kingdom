@@ -325,21 +325,24 @@ body {
 .emailoctopus-form-row input.form-control,
 .emailoctopus-form-row input.form-control:focus,
 .emailoctopus-form-row input.form-control:active {
+  box-sizing: border-box !important;
   background: rgba(38, 45, 58, 0.6) !important;
-  border: 1px solid var(--nav-border) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--nav-border) !important;
   border-radius: 12px !important;
   color: white !important;
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
   padding: 14px 20px !important;
+  margin: 0 !important;
   height: auto !important;
-  width: 100%;
-  outline: none;
+  width: 100% !important;
+  outline: none !important;
   box-shadow: none !important;
   transform: none !important;
-  position: relative;
-  top: 0 !important;
-  transition: border-color 0.2s;
+  position: static !important;
+  transition: border-color 0.2s !important;
 }
 
 .emailoctopus-form-row input.form-control:focus {
