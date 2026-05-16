@@ -291,30 +291,45 @@ body {
   opacity: 0.8;
 }
 
-#eo-subscribe-form {
-  width: 100%;
+/* Hide EO's own title/description — we supply our own above */
+.emailoctopus-form-wrapper > h2,
+.emailoctopus-form-wrapper > p:not(.emailoctopus-success-message):not(.emailoctopus-error-message) {
+  display: none;
 }
 
-#eo_embed_signup_scroll {
+/* Full-width wrapper + flex column layout */
+.emailoctopus-form-wrapper { width: 100%; }
+
+.emailoctopus-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.mc-field-group {
+/* Neutralise any Bootstrap grid EO may inject */
+.emailoctopus-form .container,
+.emailoctopus-form .row { display: contents; }
+.emailoctopus-form [class*="col-"] { padding: 0; }
+
+/* Field rows */
+.emailoctopus-form-row {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.mc-field-group label {
+/* Labels */
+.emailoctopus-form-row label {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: white;
 }
 
-.mc-field-group input {
+/* Inputs */
+.emailoctopus-form-row input[type="text"],
+.emailoctopus-form-row input[type="email"] {
   background: rgba(38, 45, 58, 0.6);
   border: 1px solid var(--nav-border);
   border-radius: 12px;
@@ -322,19 +337,19 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
   padding: 14px 20px;
+  width: 100%;
   outline: none;
   transition: border-color 0.2s;
 }
 
-.mc-field-group input:focus {
-  border-color: var(--red);
-}
+.emailoctopus-form-row input[type="text"]:focus,
+.emailoctopus-form-row input[type="email"]:focus { border-color: var(--red); }
 
-.mc-field-group input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
+.emailoctopus-form-row input[type="text"]::placeholder,
+.emailoctopus-form-row input[type="email"]::placeholder { color: rgba(255, 255, 255, 0.4); }
 
-.mc-submit-btn {
+/* Submit button */
+.emailoctopus-form button[type="submit"] {
   display: block;
   width: 100%;
   height: 60px;
@@ -350,25 +365,29 @@ body {
   transition: opacity 0.2s;
 }
 
-.mc-submit-btn:hover { opacity: 0.9; }
+.emailoctopus-form button[type="submit"]:hover { opacity: 0.9; }
 
-#eo-error-response,
-#eo-success-response {
+/* Success / error messages */
+.emailoctopus-success-message,
+.emailoctopus-error-message {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
   padding: 12px 16px;
   border-radius: 8px;
+  margin-top: 8px;
 }
 
-#eo-error-response {
+.emailoctopus-success-message {
+  color: var(--green);
+  background: rgba(76, 175, 142, 0.12);
+}
+
+.emailoctopus-error-message {
   color: var(--red);
   background: rgba(232, 93, 93, 0.12);
 }
 
-#eo-success-response {
-  color: var(--green);
-  background: rgba(76, 175, 142, 0.12);
-}
+.emailoctopus-is-hidden { display: none !important; }
 
 .feature-row {
   width: 1404px;
@@ -832,7 +851,7 @@ body {
   /* Waitlist form */
   .waitlist-section { width: 100%; }
   .waitlist-section .section-body { font-size: 18px; }
-  .mc-submit-btn { font-size: 18px; height: 54px; }
+  .emailoctopus-form button[type="submit"] { font-size: 18px; height: 54px; }
 }
 
 /* ─── SCREEN-READER ONLY ─────────────────────────────── */
