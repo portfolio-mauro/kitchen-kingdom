@@ -8,16 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
             container.innerHTML = html;
 
             var script = document.createElement('script');
-            script.src = '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js';
-            script.onload = function () {
-                (function ($) {
-                    window.fnames = new Array();
-                    window.ftypes = new Array();
-                    fnames[0] = 'EMAIL'; ftypes[0] = 'email';
-                    fnames[1] = 'FNAME'; ftypes[1] = 'text';
-                }(jQuery));
-                window.$mcj = jQuery.noConflict(true);
-            };
+            script.src = 'https://eocampaign1.com/form/35eee478-516c-11f1-b558-67defba4d3c4.js';
+            script.setAttribute('data-form', '35eee478-516c-11f1-b558-67defba4d3c4');
+            script.async = true;
             document.body.appendChild(script);
         });
 });
