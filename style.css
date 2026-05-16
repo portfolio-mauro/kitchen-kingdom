@@ -323,7 +323,9 @@ body {
 }
 
 /* Inputs — override Bootstrap form-control styles */
-.emailoctopus-form-row input.form-control {
+.emailoctopus-form-row input.form-control,
+.emailoctopus-form-row input.form-control:focus,
+.emailoctopus-form-row input.form-control:active {
   background: rgba(38, 45, 58, 0.6) !important;
   border: 1px solid var(--nav-border) !important;
   border-radius: 12px !important;
@@ -335,13 +337,14 @@ body {
   width: 100%;
   outline: none;
   box-shadow: none !important;
+  transform: none !important;
+  position: relative;
+  top: 0 !important;
   transition: border-color 0.2s;
 }
 
 .emailoctopus-form-row input.form-control:focus {
   border-color: var(--red) !important;
-  box-shadow: none !important;
-  background: rgba(38, 45, 58, 0.6) !important;
 }
 
 .emailoctopus-form-row input.form-control::placeholder {
