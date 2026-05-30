@@ -58,7 +58,8 @@ body {
   filter: brightness(0) invert(1);
 }
 
-.nav-links { display: flex; gap: 25px; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 25px; list-style: none; }
+.nav-links li { display: flex; align-items: center; }
 .nav-links a {
   color: white; text-decoration: none;
   font-weight: 700; font-size: 17px;
@@ -77,6 +78,22 @@ body {
   cursor: pointer;
 }
 .nav-cta:hover { opacity: 0.9; }
+
+.nav-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+.nav-social:hover { opacity: 1; }
+.nav-social img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 /* ─── BUTTON SQUASH & STRETCH ─────────────────────────── */
 @keyframes btn-squish {
@@ -709,6 +726,7 @@ body {
   .nav-links { gap: 14px; }
   .nav-links a { font-size: 13px; }
   .nav-cta { width: 120px; height: 38px; font-size: 13px; }
+  .nav-social { width: 20px; height: 20px; }
 
   /* Hero — reflow absolutely-positioned children into a flex column */
   .hero {
