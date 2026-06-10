@@ -127,6 +127,30 @@
             <p class="section-body">Be the first to know when Kitchen Kingdom launches.</p>
             <script async src="https://eocampaign1.com/form/35eee478-516c-11f1-b558-67defba4d3c4.js"
                 data-form="35eee478-516c-11f1-b558-67defba4d3c4"></script>
+            <script>
+                (function () {
+                    var observer = new MutationObserver(function () {
+                        var consent = document.querySelector('.emailoctopus-form-row-consent');
+                        var submit = document.querySelector('.emailoctopus-form input[type="submit"]');
+                        if (consent && submit) {
+                            var checkbox = consent.querySelector('input[type="checkbox"]');
+                            var emailInput = document.querySelector('.emailoctopus-form input[type="email"]');
+                            if (checkbox) checkbox.required = true;
+                            submit.parentNode.insertBefore(consent, submit);
+                            submit.disabled = true;
+                            function updateButton() {
+                                var emailOk = emailInput && emailInput.value.trim() !== '' && emailInput.validity.valid;
+                                var consentOk = checkbox && checkbox.checked;
+                                submit.disabled = !(emailOk && consentOk);
+                            }
+                            if (emailInput) emailInput.addEventListener('input', updateButton);
+                            if (checkbox) checkbox.addEventListener('change', updateButton);
+                            observer.disconnect();
+                        }
+                    });
+                    observer.observe(document.getElementById('mc-waitlist'), { childList: true, subtree: true });
+                })();
+            </script>
             <p style="font-size: 12px; font-style: italic; display: none;">No purchase required. Giveaway will only
                 happen if the Kickstarter campaign is successful.</p>
         </section>
