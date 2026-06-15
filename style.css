@@ -546,8 +546,8 @@ body {
 }
 
 @keyframes giveaway-shake {
-  0%, 100% { transform: translateY(-50%) rotate(-4deg); }
-  50%       { transform: translateY(-50%) rotate(4deg); }
+  0%, 100% { transform: translateY(-50%) rotate(-2deg); }
+  50%       { transform: translateY(-50%) rotate(2deg); }
 }
 
 .giveaway-img {
@@ -556,7 +556,7 @@ body {
   top: 0;
   transform-origin: center bottom;
   width: calc((100vw - 600px) / 2);
-  animation: giveaway-shake 2s ease-in-out infinite;
+  animation: giveaway-shake 4s ease-in-out infinite;
 }
 
 .waitlist-section .section-heading,
@@ -1849,7 +1849,7 @@ body {
     order: -1;
     transform-origin: center bottom;
     margin-left: 40%;
-    animation: giveaway-shake-mobile 2s ease-in-out infinite;
+    animation: giveaway-shake-mobile 4s ease-in-out infinite;
   }
 
   .waitlist-section .section-body {
