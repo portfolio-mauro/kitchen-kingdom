@@ -542,6 +542,21 @@ body {
   align-items: center;
   gap: 24px;
   width: 600px;
+  position: relative;
+}
+
+@keyframes giveaway-shake {
+  0%, 100% { transform: translateY(-50%) rotate(-4deg); }
+  50%       { transform: translateY(-50%) rotate(4deg); }
+}
+
+.giveaway-img {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform-origin: center bottom;
+  width: calc((100vw - 600px) / 2);
+  animation: giveaway-shake 2s ease-in-out infinite;
 }
 
 .waitlist-section .section-heading,
@@ -1820,6 +1835,21 @@ body {
   /* Waitlist form */
   .waitlist-section {
     width: 100%;
+  }
+
+  @keyframes giveaway-shake-mobile {
+    0%, 100% { transform: rotate(-27deg); }
+    50%       { transform: rotate(-19deg); }
+  }
+
+  .giveaway-img {
+    display: block;
+    position: static;
+    width: 270px;
+    order: -1;
+    transform-origin: center bottom;
+    margin-left: 40%;
+    animation: giveaway-shake-mobile 2s ease-in-out infinite;
   }
 
   .waitlist-section .section-body {
