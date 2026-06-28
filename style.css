@@ -192,7 +192,6 @@ body {
   align-items: center;
   gap: 240px;
   padding-bottom: 160px;
-  margin-top: 240px;
   width: 1512px;
   margin-left: auto;
   margin-right: auto;
@@ -1144,7 +1143,7 @@ body {
 @media (max-width: 1200px) {
   .page {
     gap: 160px;
-    margin-top: 180px;
+    margin-top: 0;
   }
 
   /* Hero — scale down */
@@ -1537,7 +1536,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     gap: 80px;
-    margin-top: 72px;
+    margin-top: 0;
   }
 
   /* Game info — single column, visual first */
