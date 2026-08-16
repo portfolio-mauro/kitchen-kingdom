@@ -467,8 +467,37 @@ body {
 }
 
 #trailer video {
-  width: 80%;
-  aspect-ratio: 16 / 9;
+  width: auto;
+  max-width: 100%;
+  height: 600px;
+  aspect-ratio: 9 / 16;
+}
+
+.video-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.video-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 340px;
+  max-width: 400px;
+}
+
+/* Instagram sets its own inline white background once an embed successfully
+   renders (marking the element with this class) — override it so the embed
+   blends with the page. The unrendered .instagram-media fallback card keeps
+   its inline white background so it still reads correctly if the embed fails
+   to load. */
+.instagram-media-rendered,
+.instagram-media-rendered iframe {
+  background: transparent !important;
 }
 
 /* ─── TESTIMONIALS ────────────────────────────────────── */
@@ -961,14 +990,22 @@ body {
 
 /* Upgrade cards */
 .up-stack {
-  width: 523px;
+  width: 614px;
   height: 405px;
-  --up2-tx: -217px;
+  --up2-tx: -313px;
   --up2-ty: 8px;
 }
 
 .game-card.up {
   width: 272px;
+  height: 378px;
+}
+
+/* card-upgrade-1.webp is landscape (unlike the other portrait upgrade card).
+   To keep both cards the same height without cropping up1, it gets its own
+   wider box sized to its actual aspect ratio. */
+.game-card.up.up1 {
+  width: 531px;
   height: 378px;
 }
 
@@ -979,7 +1016,7 @@ body {
 }
 
 .up2 {
-  left: 217px;
+  left: 313px;
   top: 0;
   transform: translate(var(--up2-tx), var(--up2-ty)) rotate(0deg);
 }
@@ -1010,6 +1047,30 @@ body {
 
 .up-stack.fanned .up2 {
   animation: up2-fan 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) 0.1s both;
+}
+
+/* Upgrade section only: text 33% / cards 67% width split.
+   Card left offsets are shifted +205px to re-center the stack (531px wide)
+   in the wider box, keeping the same relative spacing between up1/up2.
+   Scoped to the fixed-width desktop layout (>1559px) so it doesn't override
+   the responsive breakpoints below, which redefine these widths for
+   tablet/mobile (including the single-column mobile layout). */
+@media (min-width: 1560px) {
+  .feature-row:has(.up-stack) .feature-text {
+    width: 33%;
+  }
+
+  .feature-row:has(.up-stack) .up-stack {
+    width: 67%;
+  }
+
+  .feature-row:has(.up-stack) .up1 {
+    left: 205px;
+  }
+
+  .feature-row:has(.up-stack) .up2 {
+    left: 718px;
+  }
 }
 
 /* ─── AIM ─────────────────────────────────────────────── */
@@ -1109,7 +1170,14 @@ body {
     height: auto;
   }
 
-  .screenshot video,
+  .screenshot video {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    display: block;
+  }
+
   .screenshot iframe {
     width: 100%;
     height: auto;
@@ -1355,14 +1423,19 @@ body {
   }
 
   .up-stack {
-    width: 393px;
+    width: 461px;
     height: 304px;
-    --up2-tx: -163px;
+    --up2-tx: -235px;
     --up2-ty: 6px;
   }
 
   .game-card.up {
     width: 204px;
+    height: 284px;
+  }
+
+  .game-card.up.up1 {
+    width: 398px;
     height: 284px;
   }
 
@@ -1372,7 +1445,7 @@ body {
   }
 
   .up2 {
-    left: 163px;
+    left: 235px;
     top: 0;
   }
 
@@ -1773,10 +1846,10 @@ body {
   }
 
   .up-stack {
-    width: 262px;
+    width: 308px;
     height: 203px;
     margin: 0 auto;
-    --up2-tx: -109px;
+    --up2-tx: -157px;
     --up2-ty: 4px;
   }
 
@@ -1785,13 +1858,18 @@ body {
     height: 189px;
   }
 
+  .game-card.up.up1 {
+    width: 266px;
+    height: 189px;
+  }
+
   .up1 {
-    left: 0;
+    left: -50px;
     top: 4px;
   }
 
   .up2 {
-    left: 109px;
+    left: 207px;
     top: 0;
   }
 
