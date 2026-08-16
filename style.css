@@ -1178,13 +1178,6 @@ body {
     display: block;
   }
 
-  .screenshot iframe {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    display: block;
-  }
-
   /* Flex sections use full width */
   .feature-row {
     width: 100%;
