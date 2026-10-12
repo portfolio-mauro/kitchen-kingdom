@@ -490,6 +490,12 @@ body {
   max-width: 400px;
 }
 
+@media (min-width: 768px) {
+  .video-row--playthrough {
+    margin-top: 20px;
+  }
+}
+
 /* Instagram sets its own inline white background once an embed successfully
    renders (marking the element with this class) — override it so the embed
    blends with the page. The unrendered .instagram-media fallback card keeps
@@ -1493,6 +1499,15 @@ body {
 
 /* ── Mobile (< 768px) ──────────────────────────────────── */
 @media (max-width: 767px) {
+
+  /* Video embeds — cap YouTube iframe width so it never exceeds the viewport,
+     keeping the same 16:9 aspect ratio as desktop (560x315) */
+  .video-row iframe {
+    max-width: 94vw;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
 
   /* Navbar */
   .navbar {
