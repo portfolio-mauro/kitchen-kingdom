@@ -1502,7 +1502,7 @@ body {
 
   /* Video embeds — cap YouTube iframe width so it never exceeds the viewport,
      keeping the same 16:9 aspect ratio as desktop (560x315) */
-  .video-row iframe {
+  .youtube iframe {
     max-width: 94vw;
     width: 100%;
     height: auto;
