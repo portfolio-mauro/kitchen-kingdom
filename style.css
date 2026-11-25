@@ -26,6 +26,8 @@
   --green: #4caf8e;
   --blue: #52a5d8;
   --dark-blue: #5b7bc9;
+  --pink: #e066ad;
+  --bean: #bf9262;
   --nav-bg: rgba(38, 45, 58, 0.5);
   --nav-border: #525a6e;
 }
@@ -224,9 +226,10 @@ body {
   left: 66px;
   top: 488px;
   font-size: 38px;
-  font-weight: 300;
+  font-weight: 700;
   line-height: normal;
   white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .hero-title1 {
@@ -237,6 +240,7 @@ body {
   font-weight: 700;
   line-height: normal;
   white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .hero-title2 {
@@ -247,6 +251,7 @@ body {
   font-weight: 700;
   line-height: normal;
   white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .hero-buttons {
@@ -321,7 +326,7 @@ body {
 .game-info {
   position: relative;
   width: 1394px;
-  height: 560px;
+  height: 750px;
   flex-shrink: 0;
 }
 
@@ -333,6 +338,10 @@ body {
   font-size: 28px;
   font-weight: 400;
   line-height: 1.45;
+}
+
+.game-description p + p {
+  margin-top: 1em;
 }
 
 .game-thief {
@@ -356,7 +365,7 @@ body {
 .characters-group {
   position: absolute;
   left: 2px;
-  top: 148px;
+  top: 338px;
   width: 737px;
   height: 400px;
 }
@@ -573,6 +582,16 @@ body {
   line-height: 1.45;
 }
 
+.section-body a {
+  color: inherit;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.section-body a:hover {
+  color: #ccc;
+}
+
 .section-body ol {
   margin-left: 42px;
 }
@@ -608,6 +627,7 @@ body {
 .waitlist-section .section-heading,
 .waitlist-section .section-body {
   text-align: center;
+  text-wrap: balance;
 }
 
 .waitlist-section .section-body {
@@ -1194,6 +1214,66 @@ body {
     display: block;
   }
 
+  /* Game info — fluid grid so the 1394px layout doesn't get clipped */
+  .game-info {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 40px;
+    row-gap: 24px;
+    align-items: start;
+  }
+
+  .game-description {
+    position: static;
+    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .game-thief {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 36vw;
+    height: 29.4vw;
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+
+  .characters-group {
+    position: relative;
+    left: 0;
+    top: 0;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* Testimonials — keep the staggered look, but fluid instead of 1373px */
+  .testimonials {
+    position: static;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .t1,
+  .t2,
+  .t3,
+  .t4 {
+    position: static;
+    width: 64%;
+    margin: 0;
+  }
+
+  .t2,
+  .t4 {
+    margin-left: 36%;
+  }
+
   /* Flex sections use full width */
   .feature-row {
     width: 100%;
@@ -1276,7 +1356,7 @@ body {
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: auto auto;
     column-gap: 40px;
     row-gap: 40px;
@@ -1606,6 +1686,7 @@ body {
     left: auto;
     top: auto;
     font-size: 46px;
+    white-space: normal;
     z-index: 1;
   }
 
@@ -2037,6 +2118,14 @@ input:focus-visible,
 
 .c-dark-blue {
   color: var(--dark-blue);
+}
+
+.c-pink {
+  color: var(--pink);
+}
+
+.c-bean {
+  color: var(--bean);
 }
 
 .fw-bold {
