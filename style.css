@@ -2371,3 +2371,14 @@ input:focus-visible,
     animation: none;
   }
 }
+
+/* ─── END CTA (bottom of index.html) ─────────────────── */
+.end-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.end-cta .btn-primary {
+  width: auto;
+  padding: 0 48px;
+}
