@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WVMF9MDQ');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Post-signup thank-you page: keep it out of search results -->
+    <meta name="robots" content="noindex">
+    <title>Become a VIP | Kitchen Kingdom</title>
+    <meta name="description"
+        content="You're on the Kitchen Kingdom waitlist. For $2, unlock the best discount on the Kickstarter campaign, the private VIP Facebook group and your name in the rulebook.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="assets/fav_icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Stripe Buy Button: uncomment together with the <stripe-buy-button> block below -->
+    <!-- <script async src="https://js.stripe.com/v3/buy-button.js"></script> -->
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVMF9MDQ" height="0" width="0"
+            title="Google Tag Manager" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- ── NAVBAR ─────────────────────────────────────────── -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="index.html"><img src="assets/logo.webp" alt="Kitchen Kingdom logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#trailer">Videos</a></li>
+            <li><a href="index.html#gameplay">Gameplay</a></li>
+        </ul>
+    </nav>
+
+    <main class="vip-page" id="vip">
+
+        <!-- ── OFFER (default state) ─────────────────────── -->
+        <div class="vip-offer vip-intro">
+            <img class="vip-character" src="assets/char-pizza.webp" alt="Party Pizza cheering">
+            <p class="vip-pre">YOU'RE ON THE WAITLIST!</p>
+            <h1 class="section-heading">Want the Best Deal in the Kingdom?</h1>
+            <p class="section-body">For $2, become a Kitchen Kingdom VIP and claim the best perks before we launch on
+                Kickstarter.</p>
+        </div>
+
+        <ul class="vip-offer vip-perks">
+            <li class="vip-perk">
+                <h2>The best discount</h2>
+                <p>The lowest price on the Kickstarter campaign, for VIPs only.</p>
+            </li>
+            <li class="vip-perk">
+                <h2>Your name in the rulebook</h2>
+                <p>Become part of the Kitchen Kingdom forever, once the campaign is funded.</p>
+            </li>
+            <li class="vip-perk">
+                <h2>The VIP Facebook group</h2>
+                <p>Join the team and fellow VIPs in a private group before launch.</p>
+            </li>
+        </ul>
+
+        <div class="vip-offer vip-checkout">
+            <!--
+                Stripe Buy Button: once created in the Dashboard, uncomment this block and the
+                buy-button.js script in <head>, then remove the fallback link below.
+            <stripe-buy-button
+                buy-button-id="buy_btn_REPLACE_ME"
+                publishable-key="pk_test_REPLACE_ME">
+            </stripe-buy-button>
+            -->
+
+            <!-- Stripe Payment Link (LIVE, plink_1UfrdTPH4I1weWzSRL1D6Cwx).
+                 Sandbox test link for local testing: https://buy.stripe.com/test_5kQ14p5HMcuK2nV5UYdwc00 -->
+            <a class="btn-primary" id="vip-buy" href="https://buy.stripe.com/fZu3cxb2n3HM3wqchP0x200">Become a
+                VIP for $2</a>
+            <p class="vip-refund">Your $2 is fully refundable.</p>
+            <a class="vip-skip" href="index.html">No thanks, take me back to the homepage</a>
+        </div>
+
+        <!-- ── SUCCESS (shown when Stripe redirects back with ?vip=success) ── -->
+        <div class="vip-success vip-intro" role="status">
+            <img class="vip-character" src="assets/char-pizza.webp" alt="Party Pizza cheering">
+            <p class="vip-pre">PAYMENT RECEIVED</p>
+            <h1 class="section-heading">All Hail the New VIP!</h1>
+            <p class="section-body">You're in. Keep an eye on your inbox: we'll email you your VIP Facebook group invite
+                and everything you need for launch day.</p>
+            <a class="btn-primary" href="index.html">Back to the Kingdom</a>
+        </div>
+
+        <p class="vip-fineprint">
+            Payments are processed securely by Stripe.</p>
+
+    </main>
+
+    <script>
+        // Stripe redirects here with ?vip=success after a completed payment.
+        if (new URLSearchParams(window.location.search).get('vip') === 'success') {
+            document.getElementById('vip').classList.add('is-vip');
+            (window.dataLayer = window.dataLayer || []).push({ event: 'vip_purchase' });
+        }
+    </script>
+
+</body>
+
+</html>
