@@ -102,7 +102,7 @@
             <a class="btn-primary" href="index.html">Back to the Kingdom</a>
         </div>
 
-        <p class="vip-fineprint">
+        <p class="vip-offer vip-fineprint">
             Payments are processed securely by Stripe.</p>
 
     </main>
@@ -112,6 +112,35 @@
         if (new URLSearchParams(window.location.search).get('vip') === 'success') {
             document.getElementById('vip').classList.add('is-vip');
             (window.dataLayer = window.dataLayer || []).push({ event: 'vip_purchase' });
+            launchConfetti();
+        }
+
+        function launchConfetti() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            // Kitchen Kingdom mechanic colours
+            var colors = ['#71DBFF', '#E04848', '#F4D03F', '#0E8F6C', '#B891F2', '#E67E0F', '#C2378A', '#2F4FC4'];
+            var container = document.createElement('div');
+            container.className = 'vip-confetti';
+            container.setAttribute('aria-hidden', 'true');
+
+            for (var i = 0; i < 150; i++) {
+                var piece = document.createElement('span');
+                var size = 6 + Math.random() * 8;
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.width = size + 'px';
+                piece.style.height = size * (Math.random() < 0.5 ? 1 : 1.6) + 'px';
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.borderRadius = Math.random() < 0.3 ? '50%' : '2px';
+                piece.style.animationDuration = 3 + Math.random() * 3 + 's';
+                piece.style.animationDelay = Math.random() * 2.5 + 's';
+                piece.style.setProperty('--drift', (Math.random() * 200 - 100) + 'px');
+                piece.style.setProperty('--spin', (Math.random() * 1080 - 540) + 'deg');
+                container.appendChild(piece);
+            }
+
+            document.body.appendChild(container);
+            setTimeout(function () { container.remove(); }, 9000);
         }
     </script>
 

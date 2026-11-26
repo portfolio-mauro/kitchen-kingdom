@@ -2262,3 +2262,37 @@ input:focus-visible,
     width: 130px;
   }
 }
+
+/* Confetti on the VIP success state */
+.vip-confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.vip-confetti span {
+  position: absolute;
+  top: -20px;
+  opacity: 0.9;
+  animation-name: vip-confetti-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes vip-confetti-fall {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(var(--spin));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vip-confetti {
+    display: none;
+  }
+}
