@@ -2296,3 +2296,78 @@ input:focus-visible,
     display: none;
   }
 }
+
+/* Paparazzi camera flashes around Popular Pop on the VIP success state */
+.vip-paparazzi {
+  position: relative;
+  display: inline-block;
+}
+
+.vip-flash {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  animation: vip-flash 0.45s ease-out forwards;
+}
+
+/* Soft glow behind the burst */
+.vip-flash::before {
+  content: '';
+  position: absolute;
+  inset: -60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(113, 219, 255, 0.35) 35%, rgba(255, 255, 255, 0) 65%);
+}
+
+/* Four-point star burst */
+.vip-flash::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
+}
+
+@keyframes vip-flash {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  30% {
+    transform: translate(-50%, -50%) scale(1) rotate(15deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+/* The character lights up for a moment with each shot */
+.vip-paparazzi.is-snapped .vip-character {
+  animation: vip-flash-lit 0.3s ease-out;
+}
+
+@keyframes vip-flash-lit {
+  from {
+    filter: brightness(1.8);
+  }
+
+  to {
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vip-flash {
+    display: none;
+  }
+
+  .vip-paparazzi.is-snapped .vip-character {
+    animation: none;
+  }
+}
